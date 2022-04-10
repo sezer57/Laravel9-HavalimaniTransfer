@@ -1,277 +1,363 @@
-@extends('layouts.frontbase')
+@extends('layouts.adminbase')
 
 @section('title','HavaAlanıTransfer')
 {{--@section('sidebar')--}}
 {{--    @parent--}}
 
 {{--@endsection--}}
-@section('content') <main id="main">
+@section('content')
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container">
 
-            <div class="row content">
-                <div class="col-lg-6">
-                    <h2>Eum ipsam laborum deleniti velitena</h2>
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                    <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                    </ul>
-                    <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                    </p>
+
+            <!-- sales report area start -->
+            <div class="sales-report-area mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="single-report mb-xs-30">
+                            <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="icon"><i class="fa fa-btc"></i></div>
+                                <div class="s-report-title d-flex justify-content-between">
+                                    <h4 class="header-title mb-0">Bitcoin</h4>
+                                    <p>24 H</p>
+                                </div>
+                                <div class="d-flex justify-content-between pb-2">
+                                    <h2>$ 4567809,987</h2>
+                                    <span>- 45.87</span>
+                                </div>
+                            </div>
+                            <canvas id="coin_sales1" height="100"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-report mb-xs-30">
+                            <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="icon"><i class="fa fa-btc"></i></div>
+                                <div class="s-report-title d-flex justify-content-between">
+                                    <h4 class="header-title mb-0">Bitcoin Dash</h4>
+                                    <p>24 H</p>
+                                </div>
+                                <div class="d-flex justify-content-between pb-2">
+                                    <h2>$ 4567809,987</h2>
+                                    <span>- 45.87</span>
+                                </div>
+                            </div>
+                            <canvas id="coin_sales2" height="100"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-report">
+                            <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="icon"><i class="fa fa-eur"></i></div>
+                                <div class="s-report-title d-flex justify-content-between">
+                                    <h4 class="header-title mb-0">Euthorium</h4>
+                                    <p>24 H</p>
+                                </div>
+                                <div class="d-flex justify-content-between pb-2">
+                                    <h2>$ 4567809,987</h2>
+                                    <span>- 45.87</span>
+                                </div>
+                            </div>
+                            <canvas id="coin_sales3" height="100"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-        <div class="container">
-
+            <!-- sales report area end -->
+            <!-- overview area start -->
             <div class="row">
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-1.png" class="img-fluid" alt="">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="header-title mb-0">Overview</h4>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </div>
+                            <div id="verview-shart"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-2.png" class="img-fluid" alt="">
+                <div class="col-xl-3 col-lg-4 coin-distribution">
+                    <div class="card h-full">
+                        <div class="card-body">
+                            <h4 class="header-title mb-0">Coin Distribution</h4>
+                            <div id="coin_distribution"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-3.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-4.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-5.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{asset('assets')}}/img/clients/client-6.png" class="img-fluid" alt="">
-                </div>
-
             </div>
-
-        </div>
-    </section><!-- End Clients Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <div class="container">
-
+            <!-- overview area end -->
+            <!-- market value area start -->
+            <div class="row mt-5 mb-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <h4 class="header-title mb-0">Market Value And Trends</h4>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </div>
+                            <div class="market-status-table mt-4">
+                                <div class="table-responsive">
+                                    <table class="dbkit-table">
+                                        <tr class="heading-td">
+                                            <td class="mv-icon">Logo</td>
+                                            <td class="coin-name">Coin Name</td>
+                                            <td class="buy">Buy</td>
+                                            <td class="sell">Sells</td>
+                                            <td class="trends">Trends</td>
+                                            <td class="attachments">Attachments</td>
+                                            <td class="stats-chart">Stats</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mv-icon"><img src="{{asset('assets')}}/admin/images/icon/market-value/icon1.png" alt="icon">
+                                            </td>
+                                            <td class="coin-name">Dashcoin</td>
+                                            <td class="buy">30% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                            <td class="sell">20% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                            <td class="trends"><img src="{{asset('assets')}}/admin/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                            <td class="attachments">$ 56746,857</td>
+                                            <td class="stats-chart">
+                                                <canvas id="mvaluechart"></canvas>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mv-icon">
+                                                <div class="mv-icon"><img src="{{asset('assets')}}/admin/images/icon/market-value/icon2.png" alt="icon"></div>
+                                            </td>
+                                            <td class="coin-name">LiteCoin</td>
+                                            <td class="buy">30% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                            <td class="sell">20% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                            <td class="trends"><img src="{{asset('assets')}}/admin/images/icon/market-value/trends-down-icon.png" alt="icon"></td>
+                                            <td class="attachments">$ 56746,857</td>
+                                            <td class="stats-chart">
+                                                <canvas id="mvaluechart2"></canvas>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mv-icon">
+                                                <div class="mv-icon"><img src="{{asset('assets')}}/admin/images/icon/market-value/icon3.png" alt="icon"></div>
+                                            </td>
+                                            <td class="coin-name">Euthorium</td>
+                                            <td class="buy">30% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                            <td class="sell">20% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                            <td class="trends"><img src="{{asset('assets')}}/admin/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                            <td class="attachments">$ 56746,857</td>
+                                            <td class="stats-chart">
+                                                <canvas id="mvaluechart3"></canvas>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mv-icon">
+                                                <div class="mv-icon"><img src="{{asset('assets')}}/admin/images/icon/market-value/icon4.png" alt="icon"></div>
+                                            </td>
+                                            <td class="coin-name">Bitcoindash</td>
+                                            <td class="buy">30% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                            <td class="sell">20% <img src="{{asset('assets')}}/admin/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                            <td class="trends"><img src="{{asset('assets')}}/admin/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                            <td class="attachments">$ 56746,857</td>
+                                            <td class="stats-chart">
+                                                <canvas id="mvaluechart4"></canvas>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- market value area end -->
+            <!-- row area start -->
             <div class="row">
-                <div class="col-md-6">
-                    <div class="icon-box">
-                        <i class="bi bi-briefcase"></i>
-                        <h4><a href="#">Lorem Ipsum</a></h4>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <!-- Live Crypto Price area start -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Live Crypto Price</h4>
+                            <div class="cripto-live mt-5">
+                                <ul>
+                                    <li>
+                                        <div class="icon b">b</div> Bitcoin<span><i class="fa fa-long-arrow-up"></i>$876909.00</span></li>
+                                    <li>
+                                        <div class="icon l">l</div> Litecoin<span><i class="fa fa-long-arrow-up"></i>$29780.00</span></li>
+                                    <li>
+                                        <div class="icon d">d</div> Dashcoin<span><i class="fa fa-long-arrow-up"></i>$13276.00</span></li>
+                                    <li>
+                                        <div class="icon b">b</div> Bitcoindash<span><i class="fa fa-long-arrow-down"></i>$5684.890</span></li>
+                                    <li>
+                                        <div class="icon e">e</div> Euthorium<span><i class="fa fa-long-arrow-down"></i>$3890.98</span></li>
+                                    <li>
+                                        <div class="icon t">b</div> Tcoin<span><i class="fa fa-long-arrow-up"></i>$750.789</span></li>
+                                    <li>
+                                        <div class="icon b">b</div> Bitcoin<span><i class="fa fa-long-arrow-up"></i>$325.037</span></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-card-checklist"></i>
-                        <h4><a href="#">Dolor Sitema</a></h4>
-                        <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                <!-- Live Crypto Price area end -->
+                <!-- trading history area start -->
+                <div class="col-lg-8 mt-sm-30 mt-xs-30">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <h4 class="header-title">Trading History</h4>
+                                <div class="trd-history-tabs">
+                                    <ul class="nav" role="tablist">
+                                        <li>
+                                            <a class="active" data-toggle="tab" href="#buy_order" role="tab">Buy Order</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#sell_order" role="tab">Sell Order</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </div>
+                            <div class="trad-history mt-4">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="buy_order" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="dbkit-table">
+                                                <tr class="heading-td">
+                                                    <td>Trading ID</td>
+                                                    <td>Time</td>
+                                                    <td>Status</td>
+                                                    <td>Amount</td>
+                                                    <td>Last Trade</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>78211</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$758.90</td>
+                                                    <td>$05245.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>782782</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$77878.90</td>
+                                                    <td>$7778.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>89675978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$0768.90</td>
+                                                    <td>$0945.090</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sell_order" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="dbkit-table">
+                                                <tr class="heading-td">
+                                                    <td>Trading ID</td>
+                                                    <td>Time</td>
+                                                    <td>Status</td>
+                                                    <td>Amount</td>
+                                                    <td>Last Trade</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8964978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$445.90</td>
+                                                    <td>$094545.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>89675978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$78.90</td>
+                                                    <td>$074852945.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>78527878</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$0768.90</td>
+                                                    <td>$65465.090</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-bar-chart"></i>
-                        <h4><a href="#">Sed ut perspiciatis</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <!-- trading history area end -->
+            </div>
+            <!-- row area end -->
+            <div class="row mt-5">
+                <!-- latest news area start -->
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Latest News</h4>
+                            <div class="letest-news mt-5">
+                                <div class="single-post mb-xs-40 mb-sm-40">
+                                    <div class="lts-thumb">
+                                        <img src="{{asset('assets')}}/admin/images/blog/post-thumb1.jpg" alt="post thumb">
+                                    </div>
+                                    <div class="lts-content">
+                                        <span>Admin Post</span>
+                                        <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some...</p>
+                                    </div>
+                                </div>
+                                <div class="single-post">
+                                    <div class="lts-thumb">
+                                        <img src="{{asset('assets')}}/admin/images/blog/post-thumb2.jpg" alt="post thumb">
+                                    </div>
+                                    <div class="lts-content">
+                                        <span>Admin Post</span>
+                                        <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-binoculars"></i>
-                        <h4><a href="#">Nemo Enim</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <!-- latest news area end -->
+                <!-- exchange area start -->
+                <div class="col-xl-6 mt-md-30 mt-xs-30 mt-sm-30">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Exchange</h4>
+                            <div class="exhcange-rate mt-5">
+                                <form action="#">
+                                    <div class="input-form">
+                                        <input type="text" value="0.76834">
+                                        <span>BTC</span>
+                                    </div>
+                                    <div class="exchange-devider">To</div>
+                                    <div class="input-form">
+                                        <input type="text" value="5689.846">
+                                        <span>USD</span>
+                                    </div>
+                                    <div class="exchange-btn">
+                                        <button type="submit">Exchange Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-brightness-high"></i>
-                        <h4><a href="#">Magni Dolore</a></h4>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-calendar4-week"></i>
-                        <h4><a href="#">Eiusmod Tempor</a></h4>
-                        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-                    </div>
-                </div>
+                <!-- exchange area end -->
             </div>
 
-        </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-web">Web</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row portfolio-container">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 3</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets')}}/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets')}}/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Portfolio Section -->
-
-</main><!-- End #main -->
 
 @endsection
