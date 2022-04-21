@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminPanel as AdminHomeController;
-
+use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController ;
+use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,15 +17,21 @@ use App\Http\Controllers\AdminPanel as AdminHomeController;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+//-----------admin panel routes-------------
+Route::prefix('admin')->name('admin.')->group(function() {
+  Route::get('/', [AdminHomeController::class, 'index'])->name('index');
+////-----------admin category routes-------------
+    Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function() {
+    Route::get('/',  'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/destroy/{id}',  'destroy')->name('destroy');
+    Route::get('/show/{id}', 'show')->name('show');
 
-Route::get('admin', [AdminHomeController\HomeController::class,'index'])->name('admin');
-
-Route::get('admin/category', [AdminHomeController\CategoryController::class,'index'])->name('admin_category');
-Route::get('admin/category/create', [AdminHomeController\CategoryController::class,'create'])->name('admin_category_create');
-Route::post('admin/category/store', [AdminHomeController\CategoryController::class,'store'])->name('admin_category_store');
-Route::get('admin/category/edit/{id}', [AdminHomeController\CategoryController::class,'edit'])->name('admin_category_edit');
-Route::post('admin/category/update/{id}', [AdminHomeController\CategoryController::class,'update'])->name('admin_category_update');
-
+    });
+});
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
