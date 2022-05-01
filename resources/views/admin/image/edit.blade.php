@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Edit Category {{$data->title}}</h4>
-                    <form action="{{route('admin.transfer.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Parent Category</label>
-                            <select class="form-control select2" name="category_id" style="">
+                            <select class="form-control select2" name="parent_id" style="">
                                 <option value="0" selected="selected">Main Category</option>
                                 @foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}" @if ($rs->id == $data->category_id) selected="selected" @endif>
+                                    <option value="{{$rs->id}}" @if ($rs->id == $data->parent_id) selected="selected" @endif>
                                         {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
                                     </option>
                                 @endforeach
@@ -36,23 +36,6 @@
                             <label for="exampleInputEmail1">Description</label>
                             <input type="text" class="form-control" name="description" aria-describedby="emailHelp" value="{{$data->description}}">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Base Price</label>
-                            <input type="text" class="form-control" name="base_price" aria-describedby="emailHelp" value="{{$data->base_price}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Km Price</label>
-                            <input type="text" class="form-control" name="km_price" aria-describedby="emailHelp" value="{{$data->km_price}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Capasity</label>
-                            <input type="text" class="form-control" name="capasity" aria-describedby="emailHelp" value="{{$data->capasity}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Type of Car</label>
-                            <input type="text" class="form-control" name="type_car" aria-describedby="emailHelp" value="{{$data->type_car}}">
-                        </div>
-
 
                         <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>

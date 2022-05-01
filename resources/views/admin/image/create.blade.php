@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title','Transfer Add')
+@section('title','Category Add')
 {{--@section('sidebar')--}}
 {{--    @parent--}}
 
@@ -11,12 +11,13 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Create Transfer</h4>
-                    <form action="{{route('admin.transfer.store')}}" method="post" enctype="multipart/form-data">
+                    <h4 class="header-title">Create Category</h4>
+                    <form action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Parent Transfer</label>
-                            <select class="form-control select2" name="category_id" style="">
+                            <label>Parent Category</label>
+                            <select class="form-control select2" name="parent_id" style="">
+                                <option value="0" selected="selected">Main Category</option>
                                 @foreach($data as $rs)
                                   <option value="{{$rs->id}}">
                                       {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
@@ -36,22 +37,7 @@
                             <label for="exampleInputEmail1">Description</label>
                             <input type="text" class="form-control" name="description" aria-describedby="emailHelp" placeholder="Enter description">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Type of Car</label>
-                            <input type="text" class="form-control" name="type_car" aria-describedby="emailHelp" placeholder="Enter description">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Km Price</label>
-                            <input type="number"  value="0" class="form-control" name="km_price" aria-describedby="emailHelp" placeholder="Enter description">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Base Price</label>
-                            <input type="number"  value="0" class="form-control" name="base_price" aria-describedby="emailHelp" placeholder="Enter description">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Capasity</label>
-                            <input type="number" value="0" class="form-control" name="capasity" aria-describedby="emailHelp" placeholder="Enter description">
-                        </div>
+
                         <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>
                         <div class="input-group mb-3">

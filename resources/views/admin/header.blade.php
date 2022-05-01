@@ -23,12 +23,12 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                         </li>
                         <li class="active">
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-map"></i><span>Transfer</span></a>
-                            <ul class="collapse">
-                                <li class="active"><a href="index.html">ICO dashboard</a></li>
-                                <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                <li><a href="index3.html">SEO dashboard</a></li>
-                            </ul>
+                            <a href="/admin/transfer" aria-expanded="true"><i class="fa fa-map"></i><span>Transfer</span></a>
+{{--                            <ul class="collapse">--}}
+{{--                                <li class="active"><a href="/admin/transfer">ICO dashboard</a></li>--}}
+{{--                                <li><a href="index2.html">Ecommerce dashboard</a></li>--}}
+{{--                                <li><a href="index3.html">SEO dashboard</a></li>--}}
+{{--                            </ul>--}}
                         </li>
 
                         <li><a href="/admin/category"><i class="ti-map-alt"></i> <span>Category</span></a></li>
