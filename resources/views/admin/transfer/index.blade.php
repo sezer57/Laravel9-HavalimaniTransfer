@@ -27,6 +27,7 @@
                                 <th scope="col">Type</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Image Gallery</th>
                                 <th scope="col" style="width: 40px">Edit</th>
                                 <th scope="col" style="width: 40px">Delete</th>
                                 <th scope="col" style="width: 40px">Show</th>
@@ -36,7 +37,7 @@
                             @foreach($data as $rs)
                             <tr>
                                 <th scope="row">{{$rs->id}}</th>
-                                <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</td>
+                                <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->base_price}}</td>
                                 <td>{{$rs->km_price}}</td>
@@ -44,9 +45,14 @@
                                 <td>{{$rs->type_car}}</td>
                                 <td>
                                     @if ($rs->image)
-                                        <img src="{{Storage::url($rs->image)}}" style="height:40px">
+                                        <img src="{{Storage::url($rs->image)}}" height="75px" width="75px">
                                         @endif
                                     </td>
+                                <td>
+                                    <a href="{{route('admin.image.index',['pid'=>$rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')" >
+                                    <img src="{{asset('assets')}}/img/gallery.png" style="height:40px">
+                                    </a>
+                                </td>
                                 <td>{{$rs->status}}</td>
                                 <td><a href="{{route('admin.transfer.edit',['id'=>$rs->id])}}" class="btn btn-warning mb-3">Edit</a></td>
                                 <td><a href="{{route('admin.transfer.destroy',['id'=>$rs->id])}}" class="btn btn-danger mb-3">Delete</a></td>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\AdminTransferController ;
+use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryControlle
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+Route::get('/transfer/{id}', [HomeController::class,'transfer'])->name('transfer');
 //-----------admin panel routes-------------
 Route::prefix('admin')->name('admin.')->group(function() {
   Route::get('/', [AdminHomeController::class, 'index'])->name('index');
@@ -41,6 +43,14 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}',  'destroy')->name('destroy');
         Route::get('/show/{id}', 'show')->name('show');
+
+    });
+    ////-----------admin image gallery routes-------------
+    Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function() {
+        Route::get('/{pid}',  'index')->name('index');
+        Route::post('/store/{pid}', 'store')->name('store');
+       Route::get('/destroy/{pid}/{id}',  'destroy')->name('destroy');
+
 
     });
 });

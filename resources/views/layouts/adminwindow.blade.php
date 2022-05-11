@@ -27,12 +27,9 @@
 
 <body>
 
-@include("admin.header")
-@section('sidebar')
-    @include("admin.sidebar")
-@show
+
 @yield('content')
-@include("admin.footer")
+
 @yield('foot')
 </body>
 </html>

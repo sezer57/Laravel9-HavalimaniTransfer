@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="tr">
+    <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -34,12 +33,11 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-</head>
+    </head>
 
-<body>
+    <body>
 @include("home.header")
 @section('sidebar')
-    @include("home.sidebar")
 @show
 @yield('content')
 @include("home.footer")
