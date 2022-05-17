@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets')}}/admin/css/default-css.css">
     <link rel="stylesheet" href="{{asset('assets')}}/admin/css/styles.css">
     <link rel="stylesheet" href="{{asset('assets')}}/admin/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- modernizr css -->
     <script src="{{asset('assets')}}/admin/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
