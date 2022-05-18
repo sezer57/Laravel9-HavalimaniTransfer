@@ -25,8 +25,8 @@ class HomeController extends Controller
         return view('admin.setting',['data'=>$data]);
 
     }
-    public function settingUpdate(Request $request)
-    {   $id=$request->input('id');
+    public function settingUpdate(Request $request,$id)
+    {
         $data = Setting::find($id);
 
         $data->title=$request->input('title');
@@ -56,6 +56,7 @@ class HomeController extends Controller
         }
         $data->save();
 
-        return redirect()->route('admin_setting');
+        return redirect()->route('admin.setting');
     }
 }
+

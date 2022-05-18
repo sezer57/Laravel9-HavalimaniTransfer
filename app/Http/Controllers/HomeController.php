@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Setting;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,5 +36,37 @@ class HomeController extends Controller
             'images'=>$images
         ]);
     }
+    public function about()
+    {
+        $data=Setting::first();
 
+        return view('home.about',['data'=>$data]);
+
+    }
+    public function contact()
+    {
+        $data=Setting::first();
+
+        return view('home.contact',['data'=>$data]);
+
+    }
+    public function references()
+    {
+        $data=Setting::first();
+
+        return view('home.references',['data'=>$data]);
+
+    }
+
+
+    public function categorytransfers($id)
+    {
+        $data=Transfer::find($id);
+        $images = DB::table('images')->where('transfer_id',$id)->get();
+
+        return view('home.transfer',[
+            'data'=>$data,
+            'images'=>$images
+        ]);
+    }
 }

@@ -18,14 +18,19 @@ use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryControlle
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/about', [HomeController::class,'about'])->name('about');
+Route::get('/contact', [HomeController::class,'contact'])->name('contact');
+Route::get('/references', [HomeController::class,'references'])->name('references');
 
 Route::get('/transfer/{id}', [HomeController::class,'transfer'])->name('transfer');
+Route::get('/categorytransfers/{id}/{slug}', [HomeController::class,'categorytransfers'])->name('categorytransfers');
+
 //-----------admin panel routes-------------
 Route::prefix('admin')->name('admin.')->group(function() {
   Route::get('/', [AdminHomeController::class, 'index'])->name('index');
 ////-----------admin general setting routes-------------
   Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
-    Route::post('/setting', [AdminHomeController::class, 'settingUpdate'])->name('setting.update');
+    Route::post('/setting/{id}', [AdminHomeController::class, 'settingUpdate'])->name('setting.update');
     ////-----------admin category routes-------------
     Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function() {
     Route::get('/',  'index')->name('index');

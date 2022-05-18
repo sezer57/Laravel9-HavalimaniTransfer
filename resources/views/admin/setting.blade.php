@@ -32,7 +32,7 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade  active show" id="pills-general" role="tabpanel" aria-labelledby="pills-general-tab">
-                        <form action="{{route('admin.setting.update')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('admin.setting.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                             @csrf
                         <div class="form-group">
                             <label for="general">Title</label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label for="general">Adress</label>
-                            <input type="text" class="form-control" name="adress" value="{{$data->adress}}">
+                            <input type="text" class="form-control" name="address" value="{{$data->address}}">
                         </div>
                         <div class="form-group">
                             <label for="general">Phone</label>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="general">Email</label>
-                            <input type="text" class="form-control" name="email"  value="">
+                            <input type="text" class="form-control" name="email"  value="{{$data->email}}">
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Select</label>
@@ -114,13 +114,13 @@
                     </div>
 
                     <div class="tab-pane fade" id="pills-aboutus" role="tabpanel" aria-labelledby="pills-aboutus-tab">
-                        <textarea class="aboutus" name="aboutus" value="{{$data->aboutus}}"></textarea>
+                        <textarea class="aboutus" name="aboutus" >{{$data->aboutus}}</textarea>
                     </div>
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <textarea class="contact" name="contact" value="{{$data->contact}}"></textarea>
+                        <textarea class="contact" name="contact" >{{$data->contact}}</textarea>
                     </div>
                     <div class="tab-pane fade" id="pills-references" role="tabpanel" aria-labelledby="pills-references-tab">
-                        <textarea class="references" name="references" value="{{$data->references}}"></textarea>
+                        <textarea class="references" name="references" >{{$data->references}}</textarea>
                     </div>
                 </div>
                     <button type="submit" class="btn btn-primary mb-3">Update</button>
