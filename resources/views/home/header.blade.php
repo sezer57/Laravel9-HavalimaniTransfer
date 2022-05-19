@@ -20,12 +20,12 @@
                     <ul>
 
                         @foreach($mainCategories as $rs)
-                            <li class="dropdown"><a href="#">{{$rs->title}}</a></li>
+                            <li class="dropdown"><a href="{{route('categorytransfers',['id'=>$rs->id,'slug'=>$rs->title])}}">{{$rs->title}}</a>
 
                             @if(count($rs->children))
                                 @include('home.categorytree',['children'=>$rs->children])
                             @endif
-
+                            </li>
 {{--                        <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
 {{--                            <ul>--}}
 {{--                                <li><a href="#">Deep Drop Down 1</a></li>--}}

@@ -47,6 +47,7 @@
 
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+
                     <div class="portfolio-wrap"> <a href="/transfer/{{$rs->id}}" >
                         <img src="{{Storage::url($rs->image)}}" class="img-fluid" alt="">
                         <div class="portfolio-info">

@@ -61,12 +61,12 @@ class HomeController extends Controller
 
     public function categorytransfers($id)
     {
-        $data=Transfer::find($id);
-        $images = DB::table('images')->where('transfer_id',$id)->get();
+        $data=Category::find($id);
+        $transfers = DB::table('transfers')->where('category_id',$id)->get();
 
-        return view('home.transfer',[
+        return view('home.categorytransfers',[
             'data'=>$data,
-            'images'=>$images
+            'transfers'=>$transfers
         ]);
     }
 }
