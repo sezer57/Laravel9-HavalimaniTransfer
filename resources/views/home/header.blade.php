@@ -40,7 +40,7 @@
                     </ul>
 
 
-
+                <li><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="{{route('about')}}">About</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
                 <li><a href="{{route('references')}}">References</a></li>

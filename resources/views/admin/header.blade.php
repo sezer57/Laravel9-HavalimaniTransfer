@@ -24,18 +24,14 @@
                         </li>
                         <li class="active">
                             <a href="/admin/transfer" aria-expanded="true"><i class="fa fa-map"></i><span>Transfer</span></a>
-{{--                            <ul class="collapse">--}}
-{{--                                <li class="active"><a href="/admin/transfer">ICO dashboard</a></li>--}}
-{{--                                <li><a href="index2.html">Ecommerce dashboard</a></li>--}}
-{{--                                <li><a href="index3.html">SEO dashboard</a></li>--}}
-{{--                            </ul>--}}
+
                         </li>
 
                         <li><a href="/admin/category"><i class="ti-map-alt"></i> <span>Category</span></a></li>
 
-                        <li><a href="/admin/comments"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
-                        <li><a href="/admin/faq"><i class="fa fa-question-circle"></i> <span>FAQ</span></a></li>
-                        <li><a href="/admin/messages"><i class="fa fa-comment-o"></i> <span>Messages</span></a></li>
+                        <li><a href="{{route('admin.comment.index')}}"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
+                        <li><a href="{{route('admin.faq.index')}}"><i class="fa fa-question-circle"></i> <span>FAQ</span></a></li>
+                        <li><a href="{{route('admin.message.index')}}"><i class="fa fa-comment-o"></i> <span>Messages</span></a></li>
                         <li><a href="/admin/user"><i class="fa fa-user"></i> <span>User</span></a></li>
                         <li><a href="/admin/setting"><i class="fa fa-cog"></i> <span>SETTINGS</span></a></li>
 

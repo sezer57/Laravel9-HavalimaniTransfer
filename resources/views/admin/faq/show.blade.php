@@ -53,11 +53,6 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Detail</th>
-                                    <td>{!! $data->detail !!}</td>
-
-                                </tr>
-                                <tr>
                                     <th >Base Price</th>
                                     <td>{{$data->base_price}}</td>
 

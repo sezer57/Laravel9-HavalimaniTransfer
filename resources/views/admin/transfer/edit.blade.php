@@ -37,6 +37,10 @@
                             <input type="text" class="form-control" name="description" aria-describedby="emailHelp" value="{{$data->description}}">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Detail</label>
+                            <textarea class="edit" name="detail" >{!! $data->detail !!}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Base Price</label>
                             <input type="text" class="form-control" name="base_price" aria-describedby="emailHelp" value="{{$data->base_price}}">
                         </div>
@@ -85,4 +89,13 @@
 
 
 
+@endsection
+
+@section('foot')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.edit').summernote();
+        });
+    </script>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title','Category edit :' .$data->title)
+@section('title','Message edit :' .$data->title)
 {{--@section('sidebar')--}}
 {{--    @parent--}}
 
@@ -10,8 +10,7 @@
 
     <div class="row">
         <div class="col-12 mt-5">
-            <a style="width: 200px;color: white" class="btn btn-flat btn-info btn-md mb-3" href="{{route('admin.transfer.edit',['id'=>$data->id])}}">Edit</a>
-            <a style="width: 200px;color: white" class="btn btn-flat btn-danger btn-md mb-3" href="{{route('admin.transfer.destroy',['id'=>$data->id])}}">Delete</a>
+            <a style="width: 200px;color: white" class="btn btn-flat btn-danger btn-md mb-3" href="{{route('admin.message.destroy',['id'=>$data->id])}}">Delete</a>
 
             <div class="card">
 
@@ -20,7 +19,7 @@
                             <table class="table table-striped text-center">
                                 <thead class="text-uppercase">
                                 <tr>
-                                   <th>Detail Data</th>
+                                   <th>Detail Message</th>
 
                                 </tr>
                                 </thead>
@@ -31,52 +30,34 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Title</th>
+                                    <th >Name</th>
                                     <td>
-                                        {{$data->title}}</td>
+                                        {{$data->name}}</td>
 
                                 </tr>
 
                                 <tr>
-                                    <th >Parent Category</th>
-                                    <td> {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($data->category,$data->category->title)}}</td>
+                                    <th >Email</th>
+                                    <td> {{$data->email}}
+                                </tr>
+                                <tr>
+                                    <th >Phone</th>
+                                    <td>{{$data->phone}}</td>
 
                                 </tr>
                                 <tr>
-                                    <th >Keywords</th>
-                                    <td>{{$data->keywords}}</td>
+                                    <th >Subject</th>
+                                    <td>{{$data->subject}}</td>
 
                                 </tr>
                                 <tr>
-                                    <th >Description</th>
-                                    <td>{{$data->description}}</td>
+                                    <th >Message</th>
+                                    <td>{{$data->message}}</td>
 
                                 </tr>
                                 <tr>
-                                    <th >Base Price</th>
-                                    <td>{{$data->base_price}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Km Price</th>
-                                    <td>{{$data->km_price}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Capasity</th>
-                                    <td>{{$data->capasity}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Type of Car</th>
-                                    <td>{{$data->type_car}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Image</th>
-                                    <td> @if ($data->image)
-                                            <img src="{{Storage::url($data->image)}}" style="height:40px">
-                                        @endif</td>
+                                    <th >Ip number</th>
+                                    <td>{{$data->ip}}</td>
 
                                 </tr>
                                 <tr>
@@ -92,6 +73,20 @@
                                 <tr>
                                     <th >Update Date</th>
                                     <td>{{$data->created_at}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th >Admin Note</th>
+                                    <td>
+                                        <form action="{{route('admin.message.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                            <div class="form-group mt-3">
+                                                <textarea class="form-control" name="note" rows="5"  required="">{{$data->note}}</textarea>
+                                            </div>
+                                        <br>
+                                        <button type="submit" class="getstarted">Update Note</button>
+                                        </form>
+                                    </td>
 
                                 </tr>
                                 </tbody>

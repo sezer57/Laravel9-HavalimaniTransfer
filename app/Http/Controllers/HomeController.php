@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Faq;
 use App\Models\Image;
+use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Livewire\HydrationMiddleware\RenderView;
+
 class HomeController extends Controller
 {
     public static function maincategorylist()
@@ -30,24 +36,35 @@ class HomeController extends Controller
     {
         $data=Transfer::find($id);
         $images = DB::table('images')->where('transfer_id',$id)->get();
-
+        $reviews=Comment::where('transfer_id',$id)->where('status','True')->get();
         return view('home.transfer',[
             'data'=>$data,
-            'images'=>$images
+            'images'=>$images,
+            'reviews'=>$reviews
         ]);
     }
     public function about()
     {
-        $data=Setting::first();
+        $setting=Setting::first();
 
-        return view('home.about',['data'=>$data]);
+        return view('home.about',['setting'=>$setting]);
 
     }
     public function contact()
     {
-        $data=Setting::first();
+        $setting=Setting::first();
 
-        return view('home.contact',['data'=>$data]);
+        return view('home.contact',['setting'=>$setting]);
+
+    }
+    public function faq()
+    {   $setting=Setting::first();
+        $datalist=faq::all();
+
+        return view('home.faq',[
+            'setting'=>$setting,
+            'datalist'=>$datalist,
+            ]);
 
     }
     public function references()
@@ -63,10 +80,39 @@ class HomeController extends Controller
     {
         $data=Category::find($id);
         $transfers = DB::table('transfers')->where('category_id',$id)->get();
-
         return view('home.categorytransfers',[
             'data'=>$data,
             'transfers'=>$transfers
         ]);
+    }
+    public function storemessage(Request $request)
+    {
+        $data=new Message();
+        $data->name=$request->input('name');
+        $data->email=$request->input('email') ;
+        $data->phone=$request->input('phone');
+        $data->subject=$request->input('subject');
+        $data->message=$request->input('message');
+        $data->ip=$request->ip();
+        $data->save();
+
+
+        return redirect()->route('contact')->with('info','Your message has been sent.');
+
+    }
+    public function storecomment(Request $request)
+    {
+        $data=new Comment();
+        $data->user_id=Auth::id();
+        $data->transfer_id=$request->input('transfer_id') ;
+        $data->subject=$request->input('subject');
+        $data->review=$request->input('review');
+        $data->rate=$request->input('rate');
+        $data->ip=$request->ip();
+        $data->save();
+
+
+        return redirect()->route('transfer',['id'=>$request->input('transfer_id')])->with('info','Your comment has been sent.');
+
     }
 }

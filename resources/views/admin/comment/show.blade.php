@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title','Message edit :' .$data->title)
+@section('title','Comment & Review :' .$data->title)
 {{--@section('sidebar')--}}
 {{--    @parent--}}
 
@@ -19,7 +19,7 @@
                             <table class="table table-striped text-center">
                                 <thead class="text-uppercase">
                                 <tr>
-                                   <th>Detail Message</th>
+                                   <th>Detail Comment</th>
 
                                 </tr>
                                 </thead>
@@ -30,39 +30,35 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Name</th>
+                                    <th >Transfer</th>
                                     <td>
-                                        {{$data->name}}</td>
-
-                                </tr>
-
-                                <tr>
-                                    <th >Email</th>
-                                    <td> {{$data->email}}
-                                </tr>
-                                <tr>
-                                    <th >Phone</th>
-                                    <td>{{$data->phone}}</td>
+                                        {{$data->transfer->title}}</td>
 
                                 </tr>
                                 <tr>
                                     <th >Subject</th>
-                                    <td>{{$data->subject}}</td>
+                                    <td>
+                                        {{$data->subject}}</td>
 
                                 </tr>
-                                <tr>
-                                    <th >Message</th>
-                                    <td>{{$data->message}}</td>
 
+                                <tr>
+                                    <th >Review</th>
+                                    <td> {{$data->review}}
                                 </tr>
                                 <tr>
-                                    <th >Ip number</th>
-                                    <td>{{$data->ip}}</td>
+                                    <th >Rate</th>
+                                    <td>{{$data->rate}}</td>
 
                                 </tr>
                                 <tr>
                                     <th >Status</th>
                                     <td>{{$data->status}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th >Ip number</th>
+                                    <td>{{$data->ip}}</td>
 
                                 </tr>
                                 <tr>
@@ -76,18 +72,25 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Admin Note</th>
+                                    <th >Status</th>
                                     <td>
-                                        <form action="{{route('admin.message.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                        <form action="{{route('admin.comment.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                         @csrf
-                                            <div class="form-group mt-3">
-                                                <textarea class="form-control" name="note" rows="5"  required="">{{$data->note}}</textarea>
-                                            </div>
-                                        <br>
-                                        <button type="submit" class="getstarted">Update Note</button>
-                                        </form>
-                                    </td>
+                                            <select class="form-control" name="status">
+                                                <option selected>{{$data->status}}</option>
+                                                <option>True</option>
+                                                <option>False</option>
+                                            </select>
+                                        </br>
 
+                                    </td>
+                                <tr>
+                                    <th>
+                                    <button type="submit" class="btn btn-success mb-3">Update</button>
+                                    </th>
+                                    </form>
+
+                                </tr>
                                 </tr>
                                 </tbody>
                             </table>

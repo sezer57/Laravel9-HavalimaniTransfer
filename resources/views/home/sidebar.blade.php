@@ -8,7 +8,7 @@
         <div class="carousel-inner" role="listbox">
 @foreach($sliderdata as $rs)
             <!-- Slide 1 -->
-            <div class="carousel-item" style="background-image:url({{Storage::url($rs->image)}})">
+            <div class="carousel-item @once active @endonce" style="background-image:url({{Storage::url($rs->image)}})">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">{{$rs->title}}</h2>
@@ -17,15 +17,7 @@
                 </div>
             </div>
 @endforeach
-            <!-- Slide 2 -->
-            <div class="carousel-item active" style="background-image: url({{Storage::url($rs->image)}})">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">{{$rs->title}}</h2>
-                        <p class="animate__animated animate__fadeInUp">{{$rs->description}}</p>
-                    </div>
-                </div>
-            </div>
+
 
 
 
