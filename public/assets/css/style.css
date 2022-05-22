@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #d9232d;
+  color: #000000;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
   background: #d9232d;
@@ -137,7 +137,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #e1444d;
+  background: #bd1e27;
+}
+.navbar .getstarteda, .navbar .getstarteda:focus {
+    background: #1c6caf;
+    padding: 8px 25px;
+    margin-left: 30px;
+    border-radius: 4px;
+    font-weight: 400;
+    color: #fff;
+}
+.navbar .getstarteda:hover, .navbar .getstarteda:focus:hover {
+    color: #fff;
+    background: #17578d;
 }
 .navbar .dropdown ul {
   display: block;

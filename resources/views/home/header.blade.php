@@ -55,6 +55,7 @@
                 @endauth
                 @guest()
                 <li><a href="/loginuser" class="getstarted" >LOGIN</a></li>
+                    <a href="/registeruser" class="getstarteda" >Register</a></li>
                     @endguest()
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

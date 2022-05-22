@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title','Message edit :' .$data->title)
+@section('title','User Role  :' .$data->title)
 {{--@section('sidebar')--}}
 {{--    @parent--}}
 
@@ -40,29 +40,15 @@
                                     <th >Email</th>
                                     <td> {{$data->email}}
                                 </tr>
-                                <tr>
-                                    <th >Phone</th>
-                                    <td>{{$data->phone}}</td>
 
-                                </tr>
                                 <tr>
-                                    <th >Subject</th>
-                                    <td>{{$data->subject}}</td>
+                                    <th >Role</th>
+                                    <td>
+                                        @foreach($data->roles as $role)
+                                            {{$role->name}}  <a href="{{route('admin.user.destroyrole',['uid'=>$data->id,'rid'=>$role->id])}}" class="btn btn-danger mb-3" onclick="return confirm('Deleting are you sure?')">[X]</a>
 
-                                </tr>
-                                <tr>
-                                    <th >Message</th>
-                                    <td>{{$data->message}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Ip number</th>
-                                    <td>{{$data->ip}}</td>
-
-                                </tr>
-                                <tr>
-                                    <th >Status</th>
-                                    <td>{{$data->status}}</td>
+                                        @endforeach
+                                             </td>
 
                                 </tr>
                                 <tr>
@@ -76,15 +62,19 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Admin Note</th>
+                                    <th >Role Change</th>
                                     <td>
-                                        <form action="{{route('admin.message.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                        <form action="{{route('admin.user.addrole',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                             <div class="form-group mt-3">
-                                                <textarea class="form-control" name="note" rows="5"  required="">{{$data->note}}</textarea>
+                                                <select name="role_id">
+                                                    @foreach($roles as $role)
+                                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                                    @endforeach
+                                                   </select>
                                             </div>
                                         <br>
-                                        <button type="submit" class="getstarted">Update Note</button>
+                                        <button type="submit" class="getstarted">Update Role</button>
                                         </form>
                                     </td>
 
