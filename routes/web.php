@@ -30,6 +30,9 @@ Route::post('/storecomment', [HomeController::class,'storecomment'])->name('stor
 
 Route::get('/transfer/{id}', [HomeController::class,'transfer'])->name('transfer');
 Route::get('/categorytransfers/{id}/{slug}', [HomeController::class,'categorytransfers'])->name('categorytransfers');
+Route::view('/loginuser','home.login');
+Route::view('/registeruser','home.register');
+Route::get('/logoutuser', [HomeController::class,'logout'])->name('logoutuser');
 
 //-----------admin panel routes-------------
 Route::prefix('admin')->name('admin.')->group(function() {

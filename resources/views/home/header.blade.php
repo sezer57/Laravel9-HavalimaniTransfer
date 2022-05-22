@@ -45,8 +45,17 @@
                 <li><a href="{{route('contact')}}">Contact</a></li>
                 <li><a href="{{route('references')}}">References</a></li>
 
+@auth()
+                <li class="dropdown"><a href="" class="bi bi-person" >{{Auth::user()->name}}</a>
+                    <ul>
+                <li><a  href="/logoutuser">Log out</a></li>
 
-                <li><a href="index.html" class="getstarted">LOGIN</a></li>
+                        </li>
+                    </ul>
+                @endauth
+                @guest()
+                <li><a href="/loginuser" class="getstarted" >LOGIN</a></li>
+                    @endguest()
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

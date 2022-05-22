@@ -1,9 +1,6 @@
 @extends('layouts.frontbase')
 
 @section('title')
-@section('description')
-@section('keywords')
-@section('icon')
 
 
 @section('content')
@@ -15,7 +12,7 @@
 
                 <div class="d-flex justify-content-between align-items-center">
 
-                        <li><a href="">User Login</a></li>
+                        <li><a href="">Register</a></li>
 
                 </div>
 
@@ -27,7 +24,7 @@
                 <div class="container">
                     <div class="row faq-item d-flex align-items-stretch">
 
-                        @include('auth.login')
+                        @include('auth.register')
                         </div>
                 </div>
             </section>

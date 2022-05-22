@@ -1,9 +1,9 @@
 @extends('layouts.frontbase')
 
-@section('title',''.$setting->title)
-@section('description',$setting->description)
-@section('keywords',$setting->keywords)
-@section('icon',Storage::url($setting->icon))
+@section('title')
+@section('description')
+@section('keywords')
+@section('icon')
 
 
 @section('content')
@@ -14,11 +14,9 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>{{$setting->title}}</h2>
-                    <ol>
-                        <li><a href="">Home</a></li>
-                        <li>{{$setting->title}}</li>
-                    </ol>
+
+                        <li><a href="">User Login</a></li>
+
                 </div>
 
             </div>
@@ -29,7 +27,7 @@
                 <div class="container">
                     <div class="row faq-item d-flex align-items-stretch">
 
-                        {!!  $setting->aboutus!!}
+                        @include('auth.login')
                         </div>
                 </div>
             </section>
