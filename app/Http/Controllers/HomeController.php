@@ -23,10 +23,11 @@ class HomeController extends Controller
     }
     //
     public function index()
-    {
+    {    $setting=Setting::first();
         $sliderdata=Transfer::limit(3)->get();
         $transferlist=Transfer::limit(6)->get();
         return view('home.index',[
+            'setting'=>$setting,
             'sliderdata'=>$sliderdata,
             'transferlist'=>$transferlist
 
@@ -138,7 +139,7 @@ class HomeController extends Controller
         }
 
         return back()->withErrors([
-            'error' => 'The provided credentials do not match our records.',
+            'error' => 'Wrong password or username.',
         ])->onlyInput('email');
     }
 }

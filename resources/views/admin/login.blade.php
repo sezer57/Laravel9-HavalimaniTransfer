@@ -36,7 +36,6 @@
 <div class="login-area">
     <div class="container">
         <div class="login-box ptb--100">
-
             <form action="{{route('loginadmincheck')}}" method="post">
                 @include('home.messages')
             <div class="login-form-head">
