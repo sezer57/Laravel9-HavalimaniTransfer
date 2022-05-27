@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController ;
@@ -115,6 +116,7 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() 
 
 
     });
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth'])->prefix('myaccount')->namespace('user')->group(function() {
+    Route::get('/', [UserController::class, 'index'])->name('myprofile');
+});
+

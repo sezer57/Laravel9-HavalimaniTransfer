@@ -48,6 +48,7 @@
 @auth()
                 <li class="dropdown"><a href="" class="bi bi-person" >{{Auth::user()->name}}</a>
                     <ul>
+                        <li><a  href="/myaccount">Profile</a></li>
                 <li><a  href="/logoutuser">Log out</a></li>
 
                         </li>

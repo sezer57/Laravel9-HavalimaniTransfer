@@ -1,9 +1,7 @@
 @extends('layouts.frontbase')
 
-@section('title',''.$setting->title)
-@section('description',$setting->description)
-@section('keywords',$setting->keywords)
-@section('icon',Storage::url($setting->icon))
+@section('title','User Profile')
+
 
 
 @section('content')
@@ -14,25 +12,56 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>{{$setting->title}}</h2>
+
                     <ol>
                         <li><a href="">Home</a></li>
-                        <li>{{$setting->title}}</li>
+
                     </ol>
                 </div>
 
             </div>
         </section>
 
-        <main id="main">
-            <section id="faq" class="faq">
-                <div class="container">
-                    <div class="row faq-item d-flex align-items-stretch">
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
 
-                        {!!  $setting->aboutus!!}
-                        </div>
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+
+                        @include('profile.show')
+
+                    </div><!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+
+
+                            <h3 class="sidebar-title">User Profile</h3>
+                            <div class="sidebar-item categories">
+                                <ul>
+                                    <li><a href="#">MYACCOUNT</a></li>
+                                    <li><a href="#">MY TRANSFER </a></li>
+                                    <li><a href="#">MY COMMENTS </a></li>
+                                    <li><a href="#">MY MESSAGES </a></li>
+
+                                </ul>
+                            </div><!-- End sidebar categories-->
+
+
+
+
+
+                        </div><!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
+
                 </div>
-            </section>
+
+            </div>
+        </section>
 
 
 
