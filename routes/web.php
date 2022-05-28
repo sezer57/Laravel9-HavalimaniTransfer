@@ -6,7 +6,9 @@ use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RezervationController;
 use App\Http\Controllers\UserController;
+use App\Models\Rezervation;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController ;
@@ -36,8 +38,20 @@ Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser', [HomeController::class,'logout'])->name('logoutuser');
 Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [HomeController::class,'loginadmincheck'])->name('loginadmincheck');
+Route::get('/mytransfer', [HomeController::class,'mytransfer'])->name('mytransfer');
+Route::get('/mycomment', [HomeController::class,'mycomment'])->name('mycomment');
+Route::get('/mymessages', [HomeController::class,'mymessages'])->name('mymessages');
 
+////-----------admin rezervation routes-------------
+Route::prefix('/rezervation')->name('rezervation.')->controller(RezervationController::class)->group(function() {
+    Route::post('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/destroy/{id}',  'destroy')->name('destroy');
+    Route::get('/show/{id}', 'show')->name('show');
 
+});
 //-----------admin panel routes-------------
 Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() {
   Route::get('/', [AdminHomeController::class, 'index'])->name('index');
@@ -66,6 +80,7 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() 
         Route::get('/show/{id}', 'show')->name('show');
 
     });
+
     ////-----------admin image gallery routes-------------
     Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function() {
         Route::get('/{pid}',  'index')->name('index');
@@ -101,6 +116,14 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() 
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/destroy/{id}',  'destroy')->name('destroy');
         });
+
+    ////-----------admin  rezervation routes-------------
+    Route::prefix('/rezervation')->name('rezervation.')->controller(\App\Http\Controllers\AdminPanel\RezervationController::class)->group(function() {
+        Route::get('/',  'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}',  'destroy')->name('destroy');
+    });
 ////-----------admin  user routes-------------
     Route::prefix('/user')->name('user.')->controller(AdminUserController::class)->group(function() {
         Route::get('/',  'index')->name('index');

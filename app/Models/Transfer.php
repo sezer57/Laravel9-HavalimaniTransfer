@@ -21,4 +21,8 @@ class Transfer extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function rezervation()
+    {
+        return $this->hasMany(Rezervation::class);
+    }
 }

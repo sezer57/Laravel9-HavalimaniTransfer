@@ -32,6 +32,11 @@
                             </div>
                             <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+                        <div class="portfolio-description">
+                            <h2>Detail</h2>
+                            <p>{{$data->description}}</p>
+                        </div>
                     </div>
 
                     <div class="col-lg-4">
@@ -60,13 +65,76 @@
                                 <li><strong>Km Price</strong>: {{$data->km_price}}</li>
                                 <li><strong>Base Price</strong>:{{$data->base_price}}</li>
                             </ul>
-                        </div>
-                        <div class="portfolio-description">
-                            <h2>Detail</h2>
-                            <p>{{$data->description}}</p>
-                        </div>
-                    </div>
 
+
+                        </div>
+                        <section id="pricing" class="pricing">
+                            <div class="container">
+                                <div class="row">
+
+                                        <div class="box featured">
+                                            @include('home.messages')
+                                            <h3>Rezervation</h3>
+                                            <form action="{{route('rezervation.create')}}" method="post">
+
+                                                @csrf
+                                            <input type="hidden" value="{{$data->id}}" name="transfer_id">
+{{--                                                <input type="hidden" value="{{$data->km_price}}" name="km_price">--}}
+{{--                                                <input type="hidden" value="{{$data->base_price}}" name="base_price">--}}
+                                            <div class="form-group">
+                                                <label>Location</label>
+
+                                                <select class="form-control select2" name="to_location_id" style="">
+                                                    <option value="0" selected="selected">Chose</option>
+                                                    @foreach($locationairport as $rs)
+                                                        <option value="{{$rs->id}}" name="to_location_id" >
+                                                            {{$rs->name}}
+                                                        </option>
+{{--                                                        <input type="hidden" value="{{$rs->lat}}" name="a_lat">--}}
+{{--                                                        <input type="hidden" value="{{$rs->long}}" name="a_long">--}}
+                                                    @endforeach
+                                                </select>
+                                            </div> <div class="form-group">
+                                                <label>To Location</label>
+                                                <select class="form-control select2" name="from_location_id" style="">
+                                                    <option value="0" selected="selected">Chose</option>
+                                                    @foreach($location as $rs)
+                                                        <option value="{{$rs->id}}" name="from_location_id" >
+                                                            {{$rs->name}}
+                                                        </option>
+{{--                                                        <input type="hidden" value="{{$rs->lat}}" name="b_lat">--}}
+{{--                                                        <input type="hidden" value="{{$rs->long}}" name="b_long">--}}
+                                                    @endforeach
+                                                </select>
+                                    </div><br>
+                                                <label for="start">FlightNumber</label>
+                                                <input type="string" name="flightnumber"/>
+
+                                                <div class="form-group">
+                                                <br>
+
+                                                <label for="start">Date</label>
+
+                                                <input type="date" id="start" name="date"/>
+                                                <label for="start">Hour:</label>
+                                                <input type="time" name="hour"/>
+                                            </div>
+                                            @auth()
+                                            <div class="btn-wrap">
+                                                <button type="submit" class="btn-buy">Book</button>
+                                            </div>
+                                            </form>
+                                            @else
+                                                <div class="btn-wrap">
+                                                    <a href="/loginuser" class="btn-buy">First Login</a>
+                                                </div>
+                                            @endauth
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
                 </div>
 
                 <div class="blog">
@@ -76,9 +144,9 @@
                         @foreach($reviews as $rs)
                         <div id="comment-{{$loop->iteration}}" class="comment">
                             <div class="d-flex">
-                                <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
+                                <div class="comment-img"><img src="" alt=""></div>
                                 <div>
-                                    <h5><a href=""></a><i class="bi bi-person"></i> {{$rs->user->name}}
+                                    <h5><i class="bi bi-person"></i><a href=""> {{$rs->user->name}}</a>
                                             <span class="fa fa-star @if ($rs->rate>=1) checked @endif "></span>
                                             <span class="fa fa-star @if ($rs->rate>=2) checked @endif "></span>
                                             <span class="fa fa-star @if ($rs->rate>=3) checked @endif "></span>
@@ -96,7 +164,7 @@
 
 
                         <div class="reply-form">
-                            @include('home.messages')
+
 
                             <h4>Leave a Reply</h4>
 
@@ -125,7 +193,7 @@
                                 @auth()
                                     <button type="submit" class="btn btn-primary">Post Comment</button>
                                 @else
-                                    <a href="/login" class="btn btn-primary">For submit please login</a>
+                                    <a href="/loginuser" class="btn btn-primary">For submit please login</a>
                                 @endauth
                             </form>
 

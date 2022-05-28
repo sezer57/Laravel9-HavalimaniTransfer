@@ -71,6 +71,7 @@ class AdminTransferController extends Controller
     public function show(Transfer $transfer,$id )
     {
         {   $data= Transfer::find($id);
+
             return view('admin.transfer.show',[
                 'data'=>$data
             ]);

@@ -42,10 +42,10 @@
                             <h3 class="sidebar-title">User Profile</h3>
                             <div class="sidebar-item categories">
                                 <ul>
-                                    <li><a href="#">MYACCOUNT</a></li>
-                                    <li><a href="#">MY TRANSFER </a></li>
-                                    <li><a href="#">MY COMMENTS </a></li>
-                                    <li><a href="#">MY MESSAGES </a></li>
+                                    <li><a href="/myaccount">MYACCOUNT</a></li>
+                                    <li><a href="/mytransfer">MY TRANSFER </a></li>
+                                    <li><a href="/mycomment">MY COMMENTS </a></li>
+                                    <li><a href="/mymessages">MY MESSAGES </a></li>
 
                                 </ul>
                             </div><!-- End sidebar categories-->

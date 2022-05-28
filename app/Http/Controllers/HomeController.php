@@ -6,7 +6,9 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Image;
+use App\Models\Location;
 use App\Models\Message;
+use App\Models\Rezervation;
 use App\Models\Setting;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
@@ -36,12 +38,16 @@ class HomeController extends Controller
     public function transfer($id)
     {
         $data=Transfer::find($id);
+        $locationairport=Location::where('type','airport')->get();
+        $location=Location::where('type','city')->get();
         $images = DB::table('images')->where('transfer_id',$id)->get();
         $reviews=Comment::where('transfer_id',$id)->where('status','True')->get();
         return view('home.transfer',[
             'data'=>$data,
             'images'=>$images,
-            'reviews'=>$reviews
+            'reviews'=>$reviews,
+            'location'=>$location,
+            'locationairport'=>$locationairport
         ]);
     }
     public function about()
@@ -122,6 +128,30 @@ class HomeController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+    public function mytransfer()
+    {
+
+        $data=DB::table('rezervations')->where('user_id', Auth::user()->id)->get();
+        return view('home.mytransfer',[
+            'data'=>$data
+        ]);
+    }
+    public function mycomment()
+    {
+
+        $data=DB::table('comments')->where('user_id', Auth::user()->id)->get();
+        return view('home.mycomment',[
+            'data'=>$data
+        ]);
+    }
+    public function mymessages()
+    {
+
+        $data=DB::table('messages')->where('email', Auth::user()->email)->get();
+        return view('home.mymessages',[
+            'data'=>$data
+        ]);
     }
 
 

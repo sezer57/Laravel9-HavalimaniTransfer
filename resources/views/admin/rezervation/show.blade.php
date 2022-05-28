@@ -19,7 +19,7 @@
                             <table class="table table-striped text-center">
                                 <thead class="text-uppercase">
                                 <tr>
-                                   <th>Detail Comment</th>
+                                   <th>Rezervation List</th>
 
                                 </tr>
                                 </thead>
@@ -30,30 +30,35 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Transfer</th>
+                                    <th >user_id</th>
                                     <td>
-                                        {{$data->transfer->title}}</td>
+                                        {{$data->user_id}}</td>
 
                                 </tr>
                                 <tr>
-                                    <th >Subject</th>
+                                    <th >transfer_id</th>
                                     <td>
-                                        {{$data->subject}}</td>
+                                        {{$data->transfer_id}}</td>
 
                                 </tr>
 
                                 <tr>
-                                    <th >Review</th>
-                                    <td> {{$data->review}}
+                                    <th >from_location_id</th>
+                                    <td> {{$data->from_location_id}}
                                 </tr>
                                 <tr>
-                                    <th >Rate</th>
-                                    <td>{{$data->rate}}</td>
+                                    <th >to_location_id</th>
+                                    <td>{{$data->to_location_id}}</td>
 
                                 </tr>
                                 <tr>
-                                    <th >Status</th>
-                                    <td>{{$data->status}}</td>
+                                    <th >price</th>
+                                    <td>{{$data->price}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th >pickuptime</th>
+                                    <td>{{$data->pickuptime}}</td>
 
                                 </tr>
                                 <tr>
@@ -72,10 +77,19 @@
 
                                 </tr>
                                 <tr>
-                                    <th >Status</th>
+                                    <th >Note</th>
                                     <td>
                                         <form action="{{route('admin.comment.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                         @csrf
+                                            <div class="form-group mt-3">
+                                                <textarea class="form-control" name="note" rows="5"  required="">{{$data->note}}</textarea>
+                                            </div>
+                                            <br>
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <th >Status</th>
+                                    <td>
                                             <select class="form-control" name="status">
                                                 <option selected>{{$data->status}}</option>
                                                 <option>True</option>
@@ -84,6 +98,7 @@
                                         </br>
 
                                     </td>
+                                </tr>
                                 <tr>
                                     <th>
                                     <button type="submit" class="btn btn-success mb-3">Update</button>

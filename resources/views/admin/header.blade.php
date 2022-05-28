@@ -28,7 +28,7 @@
                         </li>
 
                         <li><a href="/admin/category"><i class="ti-map-alt"></i> <span>Category</span></a></li>
-
+                        <li><a href="{{route('admin.rezervation.index')}}"><i class="fa fa-car"></i> <span>Rezervations</span></a></li>
                         <li><a href="{{route('admin.comment.index')}}"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
                         <li><a href="{{route('admin.faq.index')}}"><i class="fa fa-question-circle"></i> <span>FAQ</span></a></li>
                         <li><a href="{{route('admin.message.index')}}"><i class="fa fa-comment-o"></i> <span>Messages</span></a></li>
