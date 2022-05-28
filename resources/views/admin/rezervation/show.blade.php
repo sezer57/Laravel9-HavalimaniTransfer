@@ -79,7 +79,7 @@
                                 <tr>
                                     <th >Note</th>
                                     <td>
-                                        <form action="{{route('admin.comment.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                        <form action="{{route('admin.rezervation.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                             <div class="form-group mt-3">
                                                 <textarea class="form-control" name="note" rows="5"  required="">{{$data->note}}</textarea>
