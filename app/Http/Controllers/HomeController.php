@@ -36,13 +36,14 @@ class HomeController extends Controller
         ]);
     }
     public function transfer($id)
-    {
+    {   $setting=Setting::first();
         $data=Transfer::find($id);
         $locationairport=Location::where('type','airport')->get();
         $location=Location::where('type','city')->get();
         $images = DB::table('images')->where('transfer_id',$id)->get();
         $reviews=Comment::where('transfer_id',$id)->where('status','True')->get();
         return view('home.transfer',[
+            'setting'=>$setting,
             'data'=>$data,
             'images'=>$images,
             'reviews'=>$reviews,
@@ -75,19 +76,22 @@ class HomeController extends Controller
 
     }
     public function references()
-    {
+    {   $setting=Setting::first();
         $data=Setting::first();
 
-        return view('home.references',['data'=>$data]);
+        return view('home.references',[
+            'setting'=>$setting,
+            'data'=>$data]);
 
     }
 
 
     public function categorytransfers($id)
-    {
+    {  $setting=Setting::first();
         $data=Category::find($id);
         $transfers = DB::table('transfers')->where('category_id',$id)->get();
         return view('home.categorytransfers',[
+            'setting'=>$setting,
             'data'=>$data,
             'transfers'=>$transfers
         ]);
@@ -131,25 +135,28 @@ class HomeController extends Controller
     }
     public function mytransfer()
     {
-
+        $setting=Setting::first();
         $data=DB::table('rezervations')->where('user_id', Auth::user()->id)->get();
         return view('home.mytransfer',[
+            'setting'=>$setting,
             'data'=>$data
         ]);
     }
     public function mycomment()
     {
-
+        $setting=Setting::first();
         $data=DB::table('comments')->where('user_id', Auth::user()->id)->get();
         return view('home.mycomment',[
+            'setting'=>$setting,
             'data'=>$data
         ]);
     }
     public function mymessages()
     {
-
+        $setting=Setting::first();
         $data=DB::table('messages')->where('email', Auth::user()->email)->get();
         return view('home.mymessages',[
+            'setting'=>$setting,
             'data'=>$data
         ]);
     }

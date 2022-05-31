@@ -116,8 +116,11 @@
                                                 <label for="start">Date</label>
 
                                                 <input type="date" id="start" name="date"/>
-                                                <label for="start">Hour:</label>
-                                                <input type="time" name="hour"/>
+
+                                                    <br>
+                                                    <br>
+                                                <label for="start">Hour(xx:00,15,30,45):</label>
+                                                <input type="time" name="hour" step="900"/>
                                             </div>
                                             @auth()
                                             <div class="btn-wrap">
@@ -136,7 +139,31 @@
 
                     </div>
                 </div>
+                <section id="clients" class="clients section-bg">
+                    <div class="container">
+                        <h5>Social Media Links:</h5>
+                        <div class="align-items-center">
 
+
+                            <a href="https://facebook.com/{{$setting->facebook}}" class="fa fa-facebook"></a>
+
+
+
+                            <a href="https://twitter.com/{{$setting->twitter}}" class="fa fa-twitter"></a>
+
+
+
+                            <a href="https://youtube.com/{{$setting->youtube}}" class="fa fa-youtube"></a>
+
+
+
+                            <a href="https://instagram.com/{{$setting->instagram}}" class="fa fa-instagram"></a>
+
+
+                        </div>
+
+                    </div>
+                </section>
                 <div class="blog">
 
                     <div class="blog-comments">

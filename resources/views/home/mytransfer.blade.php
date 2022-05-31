@@ -33,13 +33,13 @@
                             <thead class="text-uppercase bg-info">
                             <tr class="text-white">
                                 <th scope="col">Id</th>
-                                <th scope="col">user_id</th>
-                                <th scope="col">transfer_id</th>
+                                <th scope="col">User_id</th>
+                                <th scope="col">Transfer_id</th>
                                 <th scope="col">from_location</th>
                                 <th scope="col">to_location</th>
                                 <th scope="col">price</th>
                                 <th scope="col">pickuptime</th>
-                                <th scope="col">status</th>
+                                <th scope="col">Status</th>
                                 <th scope="col" >Note</th>
 
                             </tr>
@@ -71,7 +71,7 @@
                         <h3 class="sidebar-title">User Profile</h3>
                         <div class="sidebar-item categories">
                             <ul>
-                                <li><a href="/myaccount">MYACCOUNT</a></li>
+                                <li><a href="/myaccount">MY ACCOUNT</a></li>
                                 <li><a href="/mytransfer">MY TRANSFER </a></li>
                                 <li><a href="/mycomment">MY COMMENTS </a></li>
                                 <li><a href="/mymessages">MY MESSAGES </a></li>

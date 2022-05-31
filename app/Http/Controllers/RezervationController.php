@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\Rezervation;
+use App\Models\Setting;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class RezervationController extends Controller
      */
     public function create(Request $request)
 
-    {
+    { $setting=Setting::first();
         $transfer= Transfer::find($request->transfer_id);
         $to=Location::find($request->from_location_id);
         $from=Location::find($request->to_location_id);
@@ -37,6 +38,7 @@ class RezervationController extends Controller
         $total=bcsqrt($mesafe,2);
         $price=($transfer->km_price*$total)+$transfer->base_price;
         return view('home.rezervation',[
+            'setting'=>$setting,
             'transfer'=>$transfer,
             'from'=>$from,
             'to'=>$to,

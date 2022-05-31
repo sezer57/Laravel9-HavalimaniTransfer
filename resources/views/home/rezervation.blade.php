@@ -29,7 +29,7 @@
 
                     <div class="row skills-content">
                         <div class="box featured">
-                            <h3>Business</h3>
+                            <h3>Your Rezervation Info</h3>
 <form action="store" method="post">
     @csrf
     <input type="hidden" value="{{$from->id}}" name="from_location_id">
@@ -42,11 +42,11 @@
     <input type="hidden" value="{{$data->hour}}" name="pickuptime">
 
                             <ul>
-                               <li>FROM {{$from->name}}</li>
-                                <li>TO {{$to->name}}</li>
-                                <li>Date {{$data->date}}</li>
-                                <li>flightnumber {{$data->flightnumber}}</li>
-                                <li>Pickuptime {{$data->hour}}</li>
+                               <li>FROM : {{$from->name}}</li>
+                                <li>TO : {{$to->name}}</li>
+                                <li>Date : {{$data->date}}</li>
+                                <li>Flightnumber : {{$data->flightnumber}}</li>
+                                <li>Pickuptime : {{$data->hour}}</li>
                             </ul>
 
                             <h4><sup>$</sup>{{$price}}</h4>

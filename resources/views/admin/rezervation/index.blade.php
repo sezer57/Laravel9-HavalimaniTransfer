@@ -19,12 +19,12 @@
                         <thead class="text-uppercase bg-info">
                         <tr class="text-white">
                             <th scope="col">Id</th>
-                            <th scope="col">user_id</th>
-                            <th scope="col">transfer_id</th>
-                            <th scope="col">from_location</th>
-                            <th scope="col">to_location</th>
-                            <th scope="col">price</th>
-                            <th scope="col">pickuptime</th>
+                            <th scope="col">User_id</th>
+                            <th scope="col">Transfer_id</th>
+                            <th scope="col">From_location</th>
+                            <th scope="col">To_location</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Pickuptime</th>
                             <th scope="col">status</th>
                             <th scope="col" style="width: 40px">Delete</th>
                             <th scope="col" style="width: 40px">Show</th>

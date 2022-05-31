@@ -33,9 +33,11 @@
                         <p>the prices available transport choose the one which is suitable for you and start</p>
                     </div>
                 </div>
+
             </div>
 
         </div>
+
     </section><!-- End Services Section -->
 
     <!-- ======= Portfolio Section ======= -->
@@ -57,6 +59,7 @@
                             <h4>{{$rs->title}}</h4>
                         </div>
                     </div>
+
                     </a>
                 </div>
                 @endforeach
@@ -64,8 +67,43 @@
             </div>
 
         </div>
+
+
     </section><!-- End Portfolio Section -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+<h5>Social Media Links:</h5>
+            <div class="align-items-center">
+
+
+                    <a href="https://facebook.com/{{$setting->facebook}}" class="fa fa-facebook"></a>
+
+
+
+                    <a href="https://twitter.com/{{$setting->twitter}}" class="fa fa-twitter"></a>
+
+
+
+                    <a href="https://youtube.com/{{$setting->youtube}}/" class="fa fa-youtube"></a>
+
+
+
+                    <a href="https://instagram.com/{{$setting->instagram}}" class="fa fa-instagram"></a>
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
 
 </main><!-- End #main -->
 
 @endsection
+
