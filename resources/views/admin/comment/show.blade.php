@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-12 mt-5">
-            <a style="width: 200px;color: white" class="btn btn-flat btn-danger btn-md mb-3" href="{{route('admin.message.destroy',['id'=>$data->id])}}">Delete</a>
+            <a style="width: 200px;color: white" class="btn btn-flat btn-danger btn-md mb-3" href="{{route('admin.comment.destroy',['id'=>$data->id])}}">Delete</a>
 
             <div class="card">
 

@@ -20,6 +20,17 @@
             </div>
         </section>
 
-{!! $data->references !!}
+        <main id="main">
+            <section id="faq" class="faq">
+                <div class="container">
+                    <div class="row faq-item d-flex align-items-stretch">
 
+{!! $data->references !!}
+</div>
+        </div>
+        </section>
+
+
+
+    </main>
 @endsection

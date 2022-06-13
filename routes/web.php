@@ -39,6 +39,7 @@ Route::get('/logoutuser', [HomeController::class,'logout'])->name('logoutuser');
 Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [HomeController::class,'loginadmincheck'])->name('loginadmincheck');
 Route::get('/mytransfer', [HomeController::class,'mytransfer'])->name('mytransfer');
+Route::post('/mytransfercancel/{id}', [HomeController::class,'mytransfercancel'])->name('mytransfercancel');
 Route::get('/mycomment', [HomeController::class,'mycomment'])->name('mycomment');
 Route::get('/mymessages', [HomeController::class,'mymessages'])->name('mymessages');
 
@@ -52,8 +53,11 @@ Route::prefix('/rezervation')->name('rezervation.')->controller(RezervationContr
     Route::get('/show/{id}', 'show')->name('show');
 
 });
+
+
+Route::middleware('auth')->group(function (){
 //-----------admin panel routes-------------
-Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() {
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function() {
   Route::get('/', [AdminHomeController::class, 'index'])->name('index');
     ////-----------admin general setting routes-------------
   Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
@@ -135,10 +139,10 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function() 
         Route::get('/destroyrole/{uid}/{rid}',  'destroyrole')->name('destroyrole');
     });
 
+});
+});
 
 
-
-    });
 Route::middleware(['auth'])->prefix('myaccount')->namespace('user')->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('myprofile');
 });

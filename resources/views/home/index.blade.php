@@ -22,18 +22,29 @@
                 <div class="col-md-6">
                     <div class="icon-box">
                         <i class="bi bi-calendar2-date-fill"></i>
-                        <h4>CHOOSE</h4>
+                        <h4>Choose</h4>
                         <p>your destination and enter your flight information and pickuptime </p>
                     </div>
                 </div>
                 <div class="col-md-6 mt-4 mt-md-0">
                     <div class="icon-box">
                         <i class="bi bi-zoom-in"></i>
-                        <h4>COMPARE</h4>
+                        <h4>Compare</h4>
                         <p>the prices available transport choose the one which is suitable for you and start</p>
                     </div>
                 </div>
-
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-shield-lock"></i>
+                        <h4>Safety First</h4>
+                        <p>From background checks to deep cleaning standards, we're doing our part to ensure your ride is a safe one.</div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-alarm"></i>
+                        <h4>Available 24/7</h4>
+                        <p>Book airport rides, around town transportation, or tours and attractions securely with the device of your choice.</p>   </div>
+                </div>
             </div>
 
         </div>

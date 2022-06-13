@@ -4,7 +4,9 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rezervation;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Location;
 
 class RezervationController extends Controller
 
@@ -16,10 +18,11 @@ class RezervationController extends Controller
      */
     public function index()
     {
-
+        $loc=\App\Models\Location::all();
         $data= Rezervation::all();
         return view('admin.rezervation.index',[
-            'data'=>$data
+            'data'=>$data,
+            'loc'=>$loc
         ]);
     }
 
@@ -95,7 +98,7 @@ class RezervationController extends Controller
     {
         $data= Rezervation::find($id);
         $data->delete();
-        return redirect(route('admin.comment.index'));
+        return redirect(route('admin.rezervation.index'));
     }
 }
 

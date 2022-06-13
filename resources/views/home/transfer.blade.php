@@ -34,8 +34,7 @@
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 
                         <div class="portfolio-description">
-                            <h2>Detail</h2>
-                            <p>{{$data->description}}</p>
+                            <p>{!! $data->detail !!}</p>
                         </div>
                     </div>
 
@@ -79,31 +78,26 @@
 
                                                 @csrf
                                             <input type="hidden" value="{{$data->id}}" name="transfer_id">
-{{--                                                <input type="hidden" value="{{$data->km_price}}" name="km_price">--}}
-{{--                                                <input type="hidden" value="{{$data->base_price}}" name="base_price">--}}
                                             <div class="form-group">
+
                                                 <label>Location</label>
 
-                                                <select class="form-control select2" name="to_location_id" style="">
+                                                <select class="form-control select2" name="to_location_id">
                                                     <option value="0" selected="selected">Chose</option>
                                                     @foreach($locationairport as $rs)
-                                                        <option value="{{$rs->id}}" name="to_location_id" >
+                                                        <option id="to" value="{{$rs->id}}" name="to_location_id" >
                                                             {{$rs->name}}
                                                         </option>
-{{--                                                        <input type="hidden" value="{{$rs->lat}}" name="a_lat">--}}
-{{--                                                        <input type="hidden" value="{{$rs->long}}" name="a_long">--}}
                                                     @endforeach
                                                 </select>
                                             </div> <div class="form-group">
                                                 <label>To Location</label>
-                                                <select class="form-control select2" name="from_location_id" style="">
+                                                <select class="form-control select2" name="from_location_id">
                                                     <option value="0" selected="selected">Chose</option>
                                                     @foreach($location as $rs)
-                                                        <option value="{{$rs->id}}" name="from_location_id" >
+                                                        <option id="from" value="{{$rs->id}}" name="from_location_id" >
                                                             {{$rs->name}}
                                                         </option>
-{{--                                                        <input type="hidden" value="{{$rs->lat}}" name="b_lat">--}}
-{{--                                                        <input type="hidden" value="{{$rs->long}}" name="b_long">--}}
                                                     @endforeach
                                                 </select>
                                     </div><br>
@@ -240,5 +234,11 @@
 
 @endsection
 @section('foot')
+    <script>
+        function change()
+        {
+            document.getElementById("from").value="Close Curtain";
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection

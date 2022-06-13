@@ -29,7 +29,8 @@ class RezervationController extends Controller
      */
     public function create(Request $request)
 
-    { $setting=Setting::first();
+    {
+        $setting=Setting::first();
         $transfer= Transfer::find($request->transfer_id);
         $to=Location::find($request->from_location_id);
         $from=Location::find($request->to_location_id);
@@ -68,7 +69,7 @@ class RezervationController extends Controller
         $data->flightdate=$request->flightdate;
         $data->flighttime=$request->flightdate;
         $data->pickuptime=$request->pickuptime;
-        $data->note='.';
+        $data->note='waiting';
         $data->ip=$request->ip();
         $data->save();
 

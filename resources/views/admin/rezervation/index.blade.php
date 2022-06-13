@@ -34,10 +34,10 @@
                         @foreach($data as $rs)
                             <tr>
                                 <th scope="row">{{$rs->id}}</th>
-                                <td>{{$rs->user_id}}</td>
+                                <td>{{$rs->user->name}}</td>
                                 <td>{{$rs->transfer_id}}</td>
-                                <td>{{$rs->from_location_id}}</td>
-                                <td>{{$rs->to_location_id}}</td>
+                                <td>{{$rs->fromlocation->name}}</td>
+                                <td>{{$rs->tolocation->name}}</td>
                                 <td>{{$rs->price}}</td>
                                 <td>{{$rs->pickuptime}}</td>
                                 <td>{{$rs->status}}</td>

@@ -136,11 +136,19 @@ class HomeController extends Controller
     public function mytransfer()
     {
         $setting=Setting::first();
-        $data=DB::table('rezervations')->where('user_id', Auth::user()->id)->get();
+        $data=Rezervation::where('user_id', Auth::user()->id)->get();
         return view('home.mytransfer',[
             'setting'=>$setting,
             'data'=>$data
         ]);
+    }
+    public function mytransfercancel($id)
+    {
+        $data= Rezervation::find($id);
+        $data->status='Canceled';
+        $data->note='-';
+        $data->save();
+        return redirect()->back();
     }
     public function mycomment()
     {
@@ -172,7 +180,7 @@ class HomeController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin/');
+            return redirect()->intended('admin/rezervation');
         }
 
         return back()->withErrors([

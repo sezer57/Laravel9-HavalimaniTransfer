@@ -33,12 +33,11 @@
                             <thead class="text-uppercase bg-info">
                             <tr class="text-white">
                                 <th scope="col">Id</th>
-                                <th scope="col">User_id</th>
-                                <th scope="col">Transfer_id</th>
                                 <th scope="col">from_location</th>
                                 <th scope="col">to_location</th>
                                 <th scope="col">price</th>
                                 <th scope="col">pickuptime</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col" >Note</th>
 
@@ -48,14 +47,19 @@
                             @foreach($data as $rs)
                                 <tr>
                                     <th scope="row">{{$rs->id}}</th>
-                                    <td>{{$rs->user_id}}</td>
-                                    <td>{{$rs->transfer_id}}</td>
-                                    <td>{{$rs->from_location_id}}</td>
-                                    <td>{{$rs->to_location_id}}</td>
+                                    <td>{{$rs->fromlocation->name}}</td>
+                                    <td>{{$rs->tolocation->name}}</td>
                                     <td>{{$rs->price}}</td>
                                     <td>{{$rs->pickuptime}}</td>
+                                    <td>{{$rs->flighttime}}</td>
                                     <td>{{$rs->status}}</td>
                                     <td>{{$rs->note}}</td>
+                                    <td>  <form action="{{route('mytransfercancel',['id'=>$rs->id])}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                        <button type="submit" class="btn btn-danger mb-3" onclick="return confirm('Cancel are you sure?')">Cancel</button>
+                                    </form>
+                                    </td>
+                                    </td>
                                       </tr>
                             @endforeach
                             </tbody>

@@ -44,11 +44,11 @@
 
                                 <tr>
                                     <th >from_location_id</th>
-                                    <td> {{$data->from_location_id}}
+                                    <td> {{$data->fromlocation->name}}
                                 </tr>
                                 <tr>
                                     <th >to_location_id</th>
-                                    <td>{{$data->to_location_id}}</td>
+                                    <td>{{$data->tolocation->name}}</td>
 
                                 </tr>
                                 <tr>
