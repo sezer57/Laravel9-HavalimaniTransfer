@@ -1,5 +1,6 @@
 ## Introduction
-Demo Link:sezer.store
+Demo Link: https://sezer.store/ 
+
 This application allows users to book car transfers between an airport and their desired location.Admin and User Panel 
 
 ## Features
